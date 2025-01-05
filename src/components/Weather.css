@@ -1,65 +1,59 @@
-.weather{
-    place-self: center;
-    padding: 40px;
-    border-radius: 10px;
-    background-image: linear-gradient(45deg,#2f4680,#500ae4);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.search-bar{
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-.search-bar input{
-  height: 50px;
-  border: none;
-  outline: none;
-  border-radius: 40px;
-  padding-left: 25px;
-  color: #626262;
-  background: #ebfffc;
-  font-size: 18px;
-}
-.search-bar img{
-    width: 50px;
-    padding: 15px;
-    border-radius: 50%;
-    background: #edfffc;
-    cursor: pointer;
-}
-.weather-icon{
-    width: 150px;
-    margin: 30px 0;
-}
-.temperature{
-    color:#fff;
-    font-size: 80px;
-    line-height: 1;
-}
-.location{
-    color: #fff;
-    font-size: 40px;
-}
-.weather-data{
-    width: 100%;
-    margin-top: 40px;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-}
-.weather-data .col{
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    font-size: 22px;
-}
-.weather-data .col span{
-    display: block;
-    font-size: 16px;
-}
-.weather-data .col img{
-    width: 26px;
-    margin-top: 10px;
-}
+.app {
+    text-align: center;
+  }
+  
+  body {
+    background-color: #219ebc;
+  }
+  
+  .calculator {
+    background-color: #023047;
+    width: 20rem; /* Equivalent to w-80 */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5rem; /* Equivalent to mt-20 */
+    padding: 1rem; /* Equivalent to p-4 */
+    border-radius: 0.5rem; /* Equivalent to rounded-lg */
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1), 0px 4px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  input {
+    width: 80%; /* Equivalent to w-full */
+    text-align: right;
+    padding-top: 0.25rem; /* Equivalent to py-1 */
+    padding-bottom: 0.25rem;
+    padding-left: 1.25rem; /* Equivalent to px-5 */
+    padding-right: 1.25rem;
+    font-size: 1.5rem; /* Equivalent to text-2xl */
+    background-color: transparent;
+    color: #ffffff; /* White text */
+  }
+  
+  .buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem; /* Equivalent to gap-y-4 and gap-x-3 */
+    margin-top: 1rem; /* Equivalent to mt-4 */
+  }
+  
+  button {
+    transition: transform 0.3s;
+  }
+  
+  button:active {
+    transform: translateY(-0.25rem); /* Equivalent to active:-translate-y-1 */
+  }
+  
+  .number {
+    background-color: #e5e7eb; /* Equivalent to bg-gray-200 */
+    color: #374151; /* Equivalent to text-gray-700 */
+    border-radius: 0.5rem; /* Equivalent to rounded-lg */
+    padding: 0.5rem; /* Equivalent to p-2 */
+  }
+  
+  .operator {
+    background-color: #219ebc;
+    color: #ffffff;
+    border-radius: 0.5rem; /* Equivalent to rounded-lg */
+    padding: 0.5rem; /* Equivalent to p-2 */
+  }

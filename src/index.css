@@ -1,12 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", serif;
-}
-.app{
-  min-height: 100vh;
-  display: grid;
-  background: navajowhite;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  body {
+    @apply bg-[#219ebc];
+  }
+  .calculator {
+    @apply bg-[#023047] w-80 mx-auto mt-20 p-4 rounded-lg shadow-lg;
+  }
+  input {
+    @apply w-full text-right py-1 px-5 text-2xl bg-transparent text-white;
+  }
+  .buttons {
+    @apply grid grid-cols-4 gap-y-4 gap-x-3 mt-4;
+  }
+  button {
+    @apply transition duration-300 active:-translate-y-1 text-xl;
+  }
+  .number {
+    @apply bg-gray-200 text-gray-700 rounded-lg p-2;
+  }
+  .operator {
+    @apply bg-[#219ebc] text-white rounded-lg p-2;
+  }
 }

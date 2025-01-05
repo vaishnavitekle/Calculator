@@ -1,106 +1,59 @@
-import React, { useEffect, useRef, useState } from 'react'
 import './Weather.css'
-import search_icon from '../assets/search.png'
-import clear_icon from '../assets/clear.png'
-import cloud_icon from '../assets/cloud.png'
-import drizzle_icon from '../assets/drizzle.png'
-import rain_icon from '../assets/rain.png'
-import snow_icon from '../assets/snow.png'
-import wind_icon from '../assets/wind.png'
-import humidity_icon from '../assets/humidity.png'
+import React,{ useState } from 'react'
 
+function Weather() {
 
-  const Weather=()=>{
+    const [data, setData] = useState("");
 
-    const inputref=useRef()
-
-    const[weatherData,setWeatherData]=useState(false);
-
-    const allIcons={
-      "01d":clear_icon,
-      "01n":clear_icon,
-      "02d":cloud_icon,
-      "02n":cloud_icon,
-      "03d":cloud_icon,
-      "03n":cloud_icon,
-      "04d":drizzle_icon,
-      "04n":drizzle_icon,
-      "09d":rain_icon,
-      "09n":rain_icon,
-      "10d":rain_icon,
-      "10n":rain_icon,
-      "13d":snow_icon,
-      "13n":snow_icon,
+    const getValue =(event) =>{
+        console.log(event.target.value);
+        setData(data.concat(event.target.value))
+    }
+    const calculation = () =>{
+        setData(eval(data).toString())
+    }
+    const back = () =>{
+        setData(data.slice(0,-1))
+    }
+    const clear = () =>{
+        setData("")
     }
 
-    const search=async(city)=>{
+  return (
+    <>
+      <div className='calculator'>
+            <input placeholder='0' value={data}/>
+            <br/>
 
-      if(city ===""){
-        alert("Enter City Name");
-        return;
-      }
-        try {
-            const url=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${import.meta.env.VITE_APP_ID}`;
+           <div className='buttons'>
+            <button className='operator' onClick={getValue} value="(">(</button>
+            <button className='operator' onClick={getValue} value=")">)</button>
+            <button className='operator' onClick={getValue} value="%">%</button>
+            <button className='operator' onClick={clear}  >AC</button>
 
-            const url1=`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${import.meta.env.VITE_APP_ID}`;
+            <button className='number' onClick={getValue} value="7">7</button>
+            <button className='number' onClick={getValue} value="8">8</button>
+            <button className='number' onClick={getValue} value="9">9</button>
+            <button className='operator' onClick={getValue} value="*">*</button>
 
-            const response=await fetch(url1);
-            const data=await response.json();
+            <button className='number' onClick={getValue} value="4">4</button>
+            <button className='number' onClick={getValue} value="5">5</button>
+            <button className='number' onClick={getValue} value="6">6</button>
+            <button className='operator' onClick={getValue} value="-">-</button>
 
-            if(!response.ok){
-              alert(data.message);
-            }
+            <button className='number' onClick={getValue} value="1">1</button>
+            <button className='number' onClick={getValue} value="2">2</button>
+            <button className='number' onClick={getValue} value="3">3</button>
+            <button className='operator' onClick={getValue} value="+">+</button>
 
-            console.log(data);
-            const icon=allIcons[data.Weather[0].icon] || clear_icon
+            <button className='number' onClick={getValue} value="0">0</button>
+            <button className='operator' onClick={back}  >Back</button>
+            <button className='operator' onClick={calculation}  >=</button>
+            <button className='operator' onClick={getValue} value="/">/</button>
 
-            setWeatherData({
-                humidity:data.main.humidity,
-                windSpeed:data.wind.speed,
-                temperature:Math.floor(data.main.temp),
-                location:data.name,
-                icon:icon,
-            })
-        } catch (error) {
-            setWeatherData(false);
-            console.error("Error in fetching weather data")
-        }
-    }
-
-  useEffect(()=>{
-    search("London");
-  },[])
-
-
-    return (
-    <div className='weather'>
-        <div className='search-bar'>
-           <input ref={inputref} type="text" placeholder='Search'/>
-           <img src={search_icon} alt='' onClick={()=>search(inputref.current.value)}/>
-        </div>
-        {weatherData?<>
-        <img src={weatherData.icon} alt='' className='weather-icon'/>
-        <p className='temperature'>{weatherData.temperature}°C</p>
-        <p className='location'>{weatherData.location}</p>
-        <div className="weather-data">
-            <div className="col">
-                <img src={humidity_icon} alt=""/>
-                <div>
-                    <p>{weatherData.humidity}</p>
-                    <span>Humidity</span>
-                </div>
-            </div>
-
-            <div className="col">
-                <img src={wind_icon} alt=""/>
-                <div>
-                    <p>{weatherData.windSpeed} Km/h</p>
-                    <span>Wind Speed</span>
-                </div>
-            </div>
-        </div>
-        </>:<></>}
     </div>
+    </div>
+    </>
   )
 }
 
